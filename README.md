@@ -4,6 +4,12 @@ Repository for the Master of Engineering thesis **Understanding and Predicting U
 
 > **Document status:** Repository preparation stage. Proposal-defense / expert-and-cognitive-review copies of the English and Bangla questionnaires, the editable master codebook, and the English item-justification document were incorporated on 21 September 2026. They are review materials, not ethics-authorized or administered instruments. The thesis source remains unavailable. Ethics approval, recruitment, data collection, analysis completion, and publication are not claimed.
 
+## Workspace model
+
+This repository is the selective GitHub-facing workspace at `~/Desktop/MS-Thesis-GitHub`. The complete private source of truth is maintained separately at `~/Desktop/MS-Thesis`; the Git repository is not inside the Google Drive-synchronized directory.
+
+Files move from the private workspace only through the explicit mappings in `scripts/github-allowlist.json`. Run `python scripts/sync_from_private.py` for a dry-run review. Use `--apply` only after reviewing the listed paths. The tool never deletes, commits, or pushes files automatically, and it requires `--replace` before changing a nonmatching destination file.
+
 ## Research information
 
 | Item | Details |

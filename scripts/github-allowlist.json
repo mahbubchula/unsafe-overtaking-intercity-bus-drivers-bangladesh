@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "mappings": [
+    {
+      "source": "03-Questionnaire/English/questionnaire-en.docx",
+      "destination": "questionnaire/english/questionnaire-en.docx"
+    },
+    {
+      "source": "03-Questionnaire/Bangla/questionnaire-bn.docx",
+      "destination": "questionnaire/bangla/questionnaire-bn.docx"
+    },
+    {
+      "source": "03-Questionnaire/Codebook/master-codebook.xlsx",
+      "destination": "documentation/codebook/master-codebook.xlsx"
+    },
+    {
+      "source": "03-Questionnaire/Justification/item-justification-en.docx",
+      "destination": "documentation/justification/item-justification-en.docx"
+    }
+  ]
+}
