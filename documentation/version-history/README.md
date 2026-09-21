@@ -2,6 +2,8 @@
 
 No source research documents were available when the repository was initialized. Accordingly, no questionnaire, codebook, justification document, or thesis file has been assigned a proposal-review, expert-review, cognitive-review, pilot, ethics-authorized, administered, final, or archived status.
 
+The questionnaire package supplied later on 21 September 2026 is recorded in `questionnaire-package-2026-09-21.md`. Its files identify themselves as proposal-defense / expert-and-cognitive-review copies; completion of those review stages has not been independently confirmed.
+
 For each future verified document set, record:
 
 | Field | Required entry |

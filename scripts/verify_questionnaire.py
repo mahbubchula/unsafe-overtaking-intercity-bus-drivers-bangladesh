@@ -18,6 +18,7 @@ QUESTIONNAIRES = {
     "Bangla DOCX": ROOT / "questionnaire/bangla/questionnaire-bn.docx",
     "Bangla PDF": ROOT / "questionnaire/bangla/questionnaire-bn.pdf",
 }
+CODEBOOK = ROOT / "documentation/codebook/master-codebook.xlsx"
 REQUIRED_CODES = {
     "A1", "A2", "A3", "A4", "A5", "A6", "D1",
     "C2", "D2", "D3", "E4", "F1",
@@ -40,6 +41,20 @@ def docx_text(path: Path) -> str:
         return "\n".join(chunks)
 
 
+def docx_paragraph_texts(path: Path) -> list[str]:
+    """Return document-body paragraph text in XML order, including table cells."""
+    with zipfile.ZipFile(path) as archive:
+        root = ElementTree.fromstring(archive.read("word/document.xml"))
+    paragraphs: list[str] = []
+    for paragraph in (node for node in root.iter() if node.tag.endswith("}p")):
+        text = "".join(
+            node.text or "" for node in paragraph.iter() if node.tag.endswith("}t")
+        ).strip()
+        if text:
+            paragraphs.append(text)
+    return paragraphs
+
+
 def pdf_text(path: Path) -> str:
     try:
         from pypdf import PdfReader
@@ -60,6 +75,43 @@ def ordered_unique_codes(text: str) -> list[str]:
     return list(dict.fromkeys(match.group(0).upper() for match in CODE_RE.finditer(text.upper())))
 
 
+def codebook_inventory(path: Path) -> list[str]:
+    try:
+        from openpyxl import load_workbook
+    except ImportError as exc:
+        raise RuntimeError("openpyxl is required to inspect the master codebook") from exc
+    workbook = load_workbook(path, read_only=True, data_only=False)
+    try:
+        worksheet = workbook["Variable register"]
+        inventory = [
+            str(row[0]).strip().upper()
+            for row in worksheet.iter_rows(min_row=2, values_only=True)
+            if row[0] is not None and CODE_RE.fullmatch(str(row[0]).strip().upper())
+        ]
+    finally:
+        workbook.close()
+    return list(dict.fromkeys(inventory))
+
+
+def administered_order(path: Path, expected: set[str]) -> list[str]:
+    """Find first-use item order, starting at the first A1 question block."""
+    paragraphs = docx_paragraph_texts(path)
+    start = next(
+        (index for index, text in enumerate(paragraphs) if re.match(r"^A1(?:\s|$)", text)),
+        None,
+    )
+    if start is None:
+        return []
+    found: list[str] = []
+    for text in paragraphs[start:]:
+        match = re.match(r"^((?:UO|[A-Z]{1,3})\d+)(?:\s|$)", text.upper())
+        if match and match.group(1) in expected and match.group(1) not in found:
+            found.append(match.group(1))
+            if len(found) == len(expected):
+                break
+    return found
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -71,6 +123,26 @@ def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
     inventories: dict[str, list[str]] = {}
+
+    if not CODEBOOK.exists():
+        errors.append(f"Master codebook is missing: {CODEBOOK.relative_to(ROOT)}")
+        expected_codes = set(REQUIRED_CODES)
+    else:
+        try:
+            expected_inventory = codebook_inventory(CODEBOOK)
+        except Exception as exc:
+            errors.append(f"Could not read master codebook inventory: {exc}")
+            expected_inventory = []
+        if len(expected_inventory) != 45:
+            errors.append(
+                f"Master codebook contains {len(expected_inventory)} unique item codes; expected 45"
+            )
+        expected_codes = set(expected_inventory) or set(REQUIRED_CODES)
+        missing_required = sorted(REQUIRED_CODES - expected_codes)
+        if missing_required:
+            errors.append(
+                "Master codebook is missing required codes: " + ", ".join(missing_required)
+            )
 
     for label, path in QUESTIONNAIRES.items():
         if not path.exists():
@@ -85,15 +157,22 @@ def main() -> int:
         except Exception as exc:  # diagnostic tool: preserve the original file
             errors.append(f"Could not read {label}: {exc}")
             continue
-        codes = ordered_unique_codes(text)
+        all_codes = set(ordered_unique_codes(text))
+        codes = sorted(all_codes & expected_codes)
         inventories[label] = codes
-        if len(codes) != 45:
-            errors.append(f"{label} contains {len(codes)} unique item codes; expected 45")
-        missing = sorted(REQUIRED_CODES - set(codes))
+        if len(codes) != len(expected_codes):
+            errors.append(
+                f"{label} contains {len(codes)} of {len(expected_codes)} codebook item codes"
+            )
+        missing = sorted(expected_codes - set(codes))
         if missing:
-            errors.append(f"{label} is missing required codes: {', '.join(missing)}")
-        if "A6" in codes and "D1" in codes and codes.index("D1") != codes.index("A6") + 1:
-            errors.append(f"{label} does not place D1 immediately after A6 in code order")
+            errors.append(f"{label} is missing codebook item codes: {', '.join(missing)}")
+        if path.suffix.lower() == ".docx":
+            order = administered_order(path, expected_codes)
+            if "A6" not in order or "D1" not in order:
+                errors.append(f"{label} administered-question order could not locate A6 and D1")
+            elif order.index("D1") != order.index("A6") + 1:
+                errors.append(f"{label} does not place D1 immediately after A6")
         if label == "English DOCX":
             normalized = re.sub(r"\s+", " ", text).lower()
             if "overtaking-related near-crash" not in normalized:

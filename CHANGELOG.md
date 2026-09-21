@@ -11,12 +11,15 @@ This file records repository and research-document states. It follows a Keep a C
 - Planned analysis-directory documentation.
 - Read-only validation and manifest scripts.
 - Safe continuous-integration checks that tolerate explicitly unavailable research documents during repository preparation.
+- Proposal-defense / expert-and-cognitive-review English and Bangla questionnaire DOCX files, preserved under standardized names.
+- Editable seven-worksheet master codebook and English item-justification DOCX, preserved under standardized names.
+- Source checksums and document-package verification record.
 
 ### Document status
 
-- Proposal-review version: not available for verification.
-- Expert-review version: not available for verification.
-- Cognitive-review version: not available for verification.
+- Proposal-review version: review documents available; formal stage completion not confirmed.
+- Expert-review version: documents label themselves as expert-review copies; review completion not confirmed.
+- Cognitive-review version: documents label themselves as cognitive-review copies; review completion not confirmed.
 - Pilot version: not available for verification.
 - Ethics-authorized version: not available for verification; no authorization claimed.
 - Administered version: not available for verification; no administration claimed.

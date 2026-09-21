@@ -2,7 +2,7 @@
 
 Repository for the Master of Engineering thesis **Understanding and Predicting Unsafe Overtaking among Professional Intercity Bus Drivers in Bangladesh: An Integrated Bayesian and Explainable Machine Learning Framework**.
 
-> **Document status:** Repository preparation stage. The source thesis, survey instruments, codebook, and justification documents were not available in the inspected workspace on 21 September 2026. Their expected paths are documented below, but no substitute research documents have been created. Ethics approval, recruitment, data collection, analysis completion, and publication are not claimed.
+> **Document status:** Repository preparation stage. Proposal-defense / expert-and-cognitive-review copies of the English and Bangla questionnaires, the editable master codebook, and the English item-justification document were incorporated on 21 September 2026. They are review materials, not ethics-authorized or administered instruments. The thesis source remains unavailable. Ethics approval, recruitment, data collection, analysis completion, and publication are not claimed.
 
 ## Research information
 
@@ -55,19 +55,19 @@ Planned methods include Bayesian logistic regression, regularized logistic regre
 
 ## Research documents and questionnaire versions
 
-The following standardized paths are reserved for verified source documents:
+The following standardized paths identify the document package. Available source files are marked below:
 
-- `questionnaire/english/questionnaire-en.docx`
-- `questionnaire/english/questionnaire-en.pdf`
-- `questionnaire/bangla/questionnaire-bn.docx`
-- `questionnaire/bangla/questionnaire-bn.pdf`
-- `documentation/codebook/master-codebook.xlsx`
-- `documentation/codebook/master-codebook.pdf`
-- `documentation/justification/item-justification-en.docx`
-- `documentation/justification/item-justification-en.pdf`
+- `questionnaire/english/questionnaire-en.docx` — available, review copy
+- `questionnaire/english/questionnaire-en.pdf` — not supplied
+- `questionnaire/bangla/questionnaire-bn.docx` — available, review copy
+- `questionnaire/bangla/questionnaire-bn.pdf` — not supplied
+- `documentation/codebook/master-codebook.xlsx` — available, editable source
+- `documentation/codebook/master-codebook.pdf` — not supplied
+- `documentation/justification/item-justification-en.docx` — available, review copy
+- `documentation/justification/item-justification-en.pdf` — not supplied
 - `documentation/justification/item-justification-bn.pdf`, only if a real translation exists
 
-No questionnaire version is designated final, approved, ethics-authorized, or administered until its status is supported by project records. English–Bangla harmonization and response-code agreement must be verified before either instrument is described as final. The relationship among the questionnaires, codebook, and justification document is tracked in `documentation/version-history/`.
+The available English and Bangla DOCX files and the codebook share the same 45-item code inventory. This structural agreement does not establish semantic translation equivalence or approval. No questionnaire version is designated final, approved, ethics-authorized, or administered. The relationship among the questionnaires, codebook, and justification document is tracked in `documentation/version-history/`.
 
 ## Data availability and privacy
 
