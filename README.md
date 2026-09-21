@@ -1,16 +1,40 @@
+<div align="center">
+
+![Unsafe overtaking research banner](assets/thesis-banner.svg)
+
 # Unsafe Overtaking among Professional Intercity Bus Drivers in Bangladesh
+
+[![Research status](https://img.shields.io/badge/status-questionnaire%20review-7C3AED?style=for-the-badge&labelColor=312E81)](#-research-documents-and-questionnaire-versions)
+[![Questionnaire](https://img.shields.io/badge/questionnaire-45%20coded%20items-059669?style=for-the-badge&labelColor=064E3B)](#-research-overview)
+[![Languages](https://img.shields.io/badge/languages-English%20%7C%20বাংলা-DC2626?style=for-the-badge&labelColor=7F1D1D)](#-research-documents-and-questionnaire-versions)
+[![Framework](https://img.shields.io/badge/framework-Bayesian%20%2B%20ML%20%2B%20XAI-0284C7?style=for-the-badge&labelColor=0C4A6E)](#-analytical-framework)
+[![Data privacy](https://img.shields.io/badge/participant%20data-none-F59E0B?style=for-the-badge&labelColor=78350F)](#-data-availability-and-privacy)
+
+**A bilingual, privacy-conscious research repository for safer intercity transport.**
+
+[Research overview](#-research-overview) • [Questionnaires](#-research-documents-and-questionnaire-versions) • [Methods](#-analytical-framework) • [Repository map](#-repository-map) • [Privacy](#-data-availability-and-privacy)
+
+</div>
 
 Repository for the Master of Engineering thesis **Understanding and Predicting Unsafe Overtaking among Professional Intercity Bus Drivers in Bangladesh: An Integrated Bayesian and Explainable Machine Learning Framework**.
 
+> [!IMPORTANT]
 > **Document status:** Repository preparation stage. Proposal-defense / expert-and-cognitive-review copies of the English and Bangla questionnaires, the editable master codebook, and the English item-justification document were incorporated on 21 September 2026. They are review materials, not ethics-authorized or administered instruments. The thesis source remains unavailable. Ethics approval, recruitment, data collection, analysis completion, and publication are not claimed.
 
-## Workspace model
+## 🌈 At a glance
+
+| 🚌 Study | 🗺️ Coverage | 🧾 Instrument | 🧠 Planned analysis |
+| --- | --- | --- | --- |
+| Professional intercity bus drivers | Dhaka, Rajshahi, Khulna, Chattogram & Rangpur | 45 coded questions in English and Bangla | Bayesian regression, ML validation & XAI |
+| Cross-sectional survey | Bangladesh | Interviewer administered | SHAP, ALE & stability analysis |
+
+## 🔐 Workspace model
 
 This repository is the selective GitHub-facing workspace at `~/Desktop/MS-Thesis-GitHub`. The complete private source of truth is maintained separately at `~/Desktop/MS-Thesis`; the Git repository is not inside the Google Drive-synchronized directory.
 
 Files move from the private workspace only through the explicit mappings in `scripts/github-allowlist.json`. Run `python scripts/sync_from_private.py` for a dry-run review. Use `--apply` only after reviewing the listed paths. The tool never deletes, commits, or pushes files automatically, and it requires `--replace` before changing a nonmatching destination file.
 
-## Research information
+## 🎓 Research information
 
 | Item | Details |
 | --- | --- |
@@ -23,19 +47,19 @@ Files move from the private workspace only through the explicit mappings in `scr
 | University | Chulalongkorn University, Bangkok, Thailand |
 | Thesis advisor | Prof. Kasem Choocharukul |
 
-## Research overview
+## 🔎 Research overview
 
 This quantitative, cross-sectional study concerns professional intercity passenger-bus drivers in Bangladesh. The survey is designed for interviewer administration. The planned analytical sample is 450–550 drivers, with approximately 500 analyzable drivers as the working target. Recruitment locations are Dhaka, Rajshahi, Khulna, Chattogram, and Rangpur.
 
 The questionnaire design comprises exactly 45 coded questions plus a separate informed-consent script. Eligibility is established from A1–A6 and D1, with D1 asked immediately after A6. The primary binary outcome is derived from UO1–UO5.
 
-## Research objectives
+## 🎯 Research objectives
 
 1. Examine selected adjusted associations with self-reported unsafe-overtaking occurrence using Bayesian regression, with crash and near-crash history examined separately.
 2. Develop, compare, and internally validate supervised machine-learning models for unsafe-overtaking occurrence.
 3. Interpret the fitted predictive models using SHAP, accumulated local effects, selected interactions, and explanation-stability analyses.
 
-## Analytical framework
+## 🧠 Analytical framework
 
 The prespecified primary analytical core comprises C2, D2, D3, E4, and F1. These five source questions provide six slope parameters in the restricted Bayesian model. F1 distinguishes delayed-trip exposure from recovery pressure conditional on experiencing a delayed trip.
 
@@ -43,23 +67,25 @@ S1 measures collision involvement during the preceding 12 months. S2 measures ov
 
 Planned methods include Bayesian logistic regression, regularized logistic regression, Random Forest, XGBoost, CatBoost, nested internal cross-validation, discrimination, calibration, prediction error, SHAP, accumulated local effects, prespecified interaction interpretation, and explanation-stability analysis. These methods are planned; this repository does not claim completed analyses or results.
 
-## Repository structure
+## 🗂️ Repository map
 
 | Path | Purpose |
 | --- | --- |
-| `thesis/` | LaTeX thesis source, bibliography, figures, appendices, and compiled outputs |
-| `questionnaire/` | Verified English and Bangla blank survey instruments |
-| `documentation/codebook/` | Editable master codebook and review PDF |
-| `documentation/justification/` | Item-level methodological justification |
-| `documentation/interviewer-guide/` | Interviewer procedures and supporting material |
-| `documentation/methodology/` | Method and reproducibility notes that do not replace Chapter 3 |
-| `documentation/version-history/` | Instrument relationships, status records, and manifests |
-| `analysis/` | Planned data preparation, modeling, validation, explanation, and reporting workflows |
-| `scripts/` | Read-only repository and questionnaire validation utilities |
-| `environment/` | Python dependency specifications |
-| `releases/` | Release documentation; no release artifacts are currently claimed |
+| Path | Purpose | Status |
+| --- | --- | --- |
+| `thesis/` | LaTeX thesis source, bibliography, figures, appendices, and compiled outputs | 🟡 Awaiting source |
+| `questionnaire/` | Verified English and Bangla blank survey instruments | 🟢 Review copies available |
+| `documentation/codebook/` | Editable master codebook and review PDF | 🟢 Editable source available |
+| `documentation/justification/` | Item-level methodological justification | 🟢 English source available |
+| `documentation/interviewer-guide/` | Interviewer procedures and supporting material | 🟡 Planned |
+| `documentation/methodology/` | Method and reproducibility notes that do not replace Chapter 3 | 🟡 Planned |
+| `documentation/version-history/` | Instrument relationships, status records, and manifests | 🟢 Active |
+| `analysis/` | Planned data preparation, modeling, validation, explanation, and reporting workflows | 🔵 Framework prepared |
+| `scripts/` | Read-only repository and questionnaire validation utilities | 🟢 Active |
+| `environment/` | Python dependency specifications | 🟢 Available |
+| `releases/` | Release documentation; no release artifacts are currently claimed | ⚪ No release yet |
 
-## Research documents and questionnaire versions
+## 🌐 Research documents and questionnaire versions
 
 The following standardized paths identify the document package. Available source files are marked below:
 
@@ -75,17 +101,17 @@ The following standardized paths identify the document package. Available source
 
 The available English and Bangla DOCX files and the codebook share the same 45-item code inventory. This structural agreement does not establish semantic translation equivalence or approval. No questionnaire version is designated final, approved, ethics-authorized, or administered. The relationship among the questionnaires, codebook, and justification document is tracked in `documentation/version-history/`.
 
-## Data availability and privacy
+## 🛡️ Data availability and privacy
 
 This repository is intended for blank instruments, thesis source, nonconfidential documentation, and reusable analysis code. It must not contain raw or derived participant-level data, completed questionnaires, signed consent forms, direct identifiers, employer-identifying information, confidential ethics correspondence, credentials, or private research records. Restricted paths are excluded by `.gitignore`.
 
 No participant data are currently included. Any future data-sharing decision must follow the applicable consent, ethics, institutional, legal, and data-governance requirements. De-identification alone does not establish that data may be made public.
 
-## Ethics and document status
+## ⚖️ Ethics and document status
 
 No ethics approval or authorization is claimed in this repository. The thesis must preserve the appendix labels `app:questionnaire` and `app:ethics_materials`. Repository links in the questionnaire appendix should remain inactive or explicitly pending until the repository owner, visibility, and archived instrument version are confirmed. The administered instrument should ultimately be cited using an immutable release tag or commit SHA.
 
-## Reproducibility
+## ♻️ Reproducibility
 
 The `analysis/` directory records the planned workflow without fabricating data, executable results, or performance estimates. Development dependencies are listed in `environment/requirements-dev.txt`. Run the local checks from the repository root:
 
@@ -97,14 +123,14 @@ python scripts/generate_manifest.py --output documentation/version-history/repos
 
 The checks report missing or inconsistent materials and do not modify scientific content.
 
-## Citation
+## 📚 Citation
 
 Citation metadata are provided in `CITATION.cff`. Update the repository version and add an immutable repository URL only after the corresponding Git state and remote have been confirmed. Do not add a DOI or publication date unless one exists.
 
-## Licensing
+## 📜 Licensing
 
 Copyright and reuse permissions may differ for thesis text, questionnaires, documentation, figures, and code. See `LICENSE-NOTICE.md`. No blanket open-source or open-content license is granted at this stage.
 
-## Contributions and contact
+## 🤝 Contributions and contact
 
 See `CONTRIBUTING.md` before proposing a change. Scientific-content changes require documented review and must not alter the established research design silently. Project correspondence should use an institutionally appropriate channel supplied by the researcher; no private contact information is published here.
