@@ -1,0 +1,58 @@
+name: Research document change
+description: Propose a traceable update to a thesis or research document.
+title: "Document change: "
+labels: [documentation]
+body:
+  - type: dropdown
+    id: document_type
+    attributes:
+      label: Document type
+      options:
+        - Thesis source
+        - English questionnaire
+        - Bangla questionnaire
+        - Master codebook
+        - Item justification
+        - Interviewer guide
+        - Other research documentation
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Preserved source filename or reference
+      description: Identify the source without including private participant information.
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Evidence-supported document status
+      options:
+        - Status not yet verified
+        - Proposal review
+        - Expert review
+        - Cognitive review
+        - Pilot
+        - Ethics authorized
+        - Administered
+        - Archived thesis
+    validations:
+      required: true
+  - type: textarea
+    id: change
+    attributes:
+      label: Proposed change and rationale
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety and provenance checks
+      options:
+        - label: No participant-level or confidential material is included.
+          required: true
+        - label: The original source is preserved.
+          required: true
+        - label: Scientific-content changes and required review are identified.
+          required: true

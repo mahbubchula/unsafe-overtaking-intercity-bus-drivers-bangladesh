@@ -1,0 +1,76 @@
+# Human-participant and restricted research data
+data/raw/
+data/interim/
+data/processed/
+private/
+confidential/
+**/completed-questionnaires/
+**/signed-consent/
+**/participant-data/
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+secrets.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# LaTeX auxiliary and local build files
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+_minted-*/
+thesis/latex/build/
+thesis/latex/.latexmk/
+
+# Analysis outputs that may contain derived participant-level information
+analysis/**/artifacts/
+analysis/**/cache/
+analysis/**/outputs/
+
+# Temporary office files
+~$*.docx
+~$*.xlsx
+~$*.pptx

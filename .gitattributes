@@ -1,0 +1,23 @@
+* text=auto eol=lf
+
+*.bat text eol=crlf
+*.bib text diff
+*.cff text diff
+*.csv text diff
+*.md text diff
+*.py text diff
+*.tex text diff
+*.txt text diff
+*.yml text diff
+*.yaml text diff
+
+*.doc binary
+*.docx binary
+*.pdf binary
+*.xls binary
+*.xlsx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tif binary
+*.tiff binary

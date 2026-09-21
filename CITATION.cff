@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "Please cite this repository using the metadata below. Update the version and repository URL when an immutable public or private archival reference has been confirmed."
+type: software
+title: "Understanding and Predicting Unsafe Overtaking among Professional Intercity Bus Drivers in Bangladesh: An Integrated Bayesian and Explainable Machine Learning Framework"
+authors:
+  - family-names: Hassan
+    given-names: Mahbub
+version: 0.1.0-dev
